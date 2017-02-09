@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'nokogiri'
-require 'restclient'
+require 'rest-client'
 require 'open-uri'
 require 'csv'
 require 'retryable'
