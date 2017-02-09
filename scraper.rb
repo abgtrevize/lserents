@@ -1,25 +1,49 @@
-# This is a template for a Ruby scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+require 'rubygems'
+require 'nokogiri'
+require 'restclient'
+require 'open-uri'
+require 'csv'
+require 'retryable'
+require 'json'
+require	'scraperwiki'
 
-# require 'scraperwiki'
-# require 'mechanize'
-#
-# agent = Mechanize.new
-#
-# # Read in a page
-# page = agent.get("http://foo.com")
-#
-# # Find somehing on the page using css selectors
-# p page.at('div.content')
-#
-# # Write out to the sqlite database using scraperwiki library
-# ScraperWiki.save_sqlite(["name"], {"name" => "susan", "occupation" => "software developer"})
-#
-# # An arbitrary query against the database
-# ScraperWiki.select("* from data where 'name'='peter'")
+props=
+{
+	"313412" => "tides",
+	"313413" => "shoreham",
+	"313411" => "coast",
+	"313410" => "aqua"
+}
 
-# You don't have to do things with the Mechanize or ScraperWiki libraries.
-# You can use whatever gems you want: https://morph.io/documentation/ruby
-# All that matters is that your final data is written to an SQLite database
-# called "data.sqlite" in the current working directory which has at least a table
-# called "data".
+file=File.read('list.json')
+pidlist=JSON.parse(file)
+stamp=Time.now
+
+pidlist.each { |key,value|
+	base="http://www.rent"<<props[pidlist["#{key}"]["propertyid"]]<<".com/availableunits.aspx?"
+	retryable( :tries => 40, :on => [ ArgumentError, TimeoutError ] ) do
+		@page=Nokogiri::HTML(RestClient.get("#{base}PropertyId="<<pidlist["#{key}"]["propertyid"]<<"&floorPlans="<<pidlist["#{key}"]["apartmentid"]))
+	end	
+	if @page.css("label.alert.alert-block.alert-warning").text.strip()=="Units are not available under selected Floor plan(s). Below are the available units for other floor plan(s)."
+		puts "No floor plans found for #{key} #{value}"
+		next
+	else
+		price=@page.css("tr.AvailUnitRow")
+		price.each { |x| 
+			apt_n=x.text.strip()[0,5]
+			size=x.text.strip()[5,3]
+			lowr=x.text.strip()[8,6]
+			highr=x.text.strip()[15,6]
+			ScraperWiki.save_sqlite(["stamp","propertyid","apartmentid"], 
+				{"stamp" => stamp,
+				 "propertyid" => props[pidlist["#{key}"]["propertyid"]],
+				 "apartmentid" => pidlist["#{key}"]["apartmentid"]
+				 "apt_n" => apt_n,
+				 "size" => size,
+				 "lowr" => lowr,
+				 "highr" => highr
+				 })
+			sleep 0.1 + rand
+			}
+	end
+}
