@@ -1,0 +1,91 @@
+{
+	"A1" : {
+		"propertyid": "313412",
+		"apartmentid": "1425810"
+	},
+	"A2" : {
+		"propertyid": "313412",
+		"apartmentid": "1425811"
+	},
+	"A3" : {
+		"propertyid": "313412",
+		"apartmentid": "1425812"
+	},
+	"B1" : {
+		"propertyid": "313413",
+		"apartmentid": "1425821"
+	},	
+	"B2" : {
+		"propertyid": "313413",
+		"apartmentid": "1425822"
+	},	
+	"B3" : {
+		"propertyid": "313413",
+		"apartmentid": "1425823"
+	},	
+	"B4" : {
+		"propertyid": "313413",
+		"apartmentid": "1425824"
+	},	
+	"B5" : {
+		"propertyid": "313413",
+		"apartmentid": "1981660"
+	},	
+	"C1" : {
+		"propertyid": "313411",
+		"apartmentid": "1425791"
+	},	
+	"C2" : {
+		"propertyid": "313411",
+		"apartmentid": "1425792"
+	},	
+	"C3" : {
+		"propertyid": "313411",
+		"apartmentid": "1425793"
+	},	
+	"C4" : {
+		"propertyid": "313411",
+		"apartmentid": "1425794"
+	},	
+	"C5" : {
+		"propertyid": "313411",
+		"apartmentid": "1425795"
+	},	
+	"C6" : {
+		"propertyid": "313411",
+		"apartmentid": "1425796"
+	},	
+	"C7" : {
+		"propertyid": "313411",
+		"apartmentid": "1425797"
+	},	
+	"D1" : {
+		"propertyid": "313410",
+		"apartmentid": "1425777"
+	},	
+	"D2" : {
+		"propertyid": "313410",
+		"apartmentid": "1425779"
+	},	
+	"D3" : {
+		"propertyid": "313410",
+		"apartmentid": "1425780"
+	},	
+	"D4" : {
+		"propertyid": "313410",
+		"apartmentid": "1425781"
+	},	
+	"D5" : {
+		"propertyid": "313410",
+		"apartmentid": "1425782"
+	},	
+	"D6" : {
+		"propertyid": "313410",
+		"apartmentid": "1425783"
+	},	
+	"D7" : {
+		"propertyid": "313410",
+		"apartmentid": "1425784"
+	}
+}
+
