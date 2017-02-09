@@ -9,6 +9,6 @@ ruby "2.2.1"
 gem "scraperwiki", git: "https://github.com/openaustralia/scraperwiki-ruby.git", branch: "morph_defaults"
 gem "mechanize"
 gem 'nokogiri'
-gem 'restclient'
+gem 'rest-client'
 gem 'retryable'
 gem 'json'
