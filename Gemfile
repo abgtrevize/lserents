@@ -10,7 +10,5 @@ gem "scraperwiki", git: "https://github.com/openaustralia/scraperwiki-ruby.git",
 gem "mechanize"
 gem 'nokogiri'
 gem 'restclient'
-gem 'open-uri'
-gem 'csv'
 gem 'retryable'
 gem 'json'
