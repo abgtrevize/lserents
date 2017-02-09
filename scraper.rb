@@ -37,7 +37,7 @@ pidlist.each { |key,value|
 			ScraperWiki.save_sqlite(["stamp","propertyid","apartmentid"], 
 				{"stamp" => stamp,
 				 "propertyid" => props[pidlist["#{key}"]["propertyid"]],
-				 "apartmentid" => pidlist["#{key}"]["apartmentid"]
+				 "apartmentid" => pidlist["#{key}"]["apartmentid"],
 				 "apt_n" => apt_n,
 				 "size" => size,
 				 "lowr" => lowr,
