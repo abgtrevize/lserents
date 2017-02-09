@@ -21,9 +21,9 @@ stamp=Time.now
 
 pidlist.each { |key,value|
 	base="http://www.rent"<<props[pidlist["#{key}"]["propertyid"]]<<".com/availableunits.aspx?"
-	retryable( :tries => 40, :on => [ ArgumentError, TimeoutError ] ) do
+#	retryable( :tries => 40, :on => [ ArgumentError, TimeoutError ] ) do
 		@page=Nokogiri::HTML(RestClient.get("#{base}PropertyId="<<pidlist["#{key}"]["propertyid"]<<"&floorPlans="<<pidlist["#{key}"]["apartmentid"]))
-	end	
+#	end	
 	if @page.css("label.alert.alert-block.alert-warning").text.strip()=="Units are not available under selected Floor plan(s). Below are the available units for other floor plan(s)."
 		puts "No floor plans found for #{key} #{value}"
 		next
